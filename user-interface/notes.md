@@ -79,7 +79,7 @@ You connect it to the VF page like this:
 ```xml
 <apex:page controller="MyController">
 ```
-####🔹 Key Concepts
+#### 🔹Key Concepts
 ✔ Custom controllers MUST have a public, no-argument constructor
 Visualforce instantiates the controller using new MyController(), so the constructor:
 - must be public
@@ -103,7 +103,7 @@ public MyController(ApexPages.StandardController std) { }
 public MyController(Map<Id, SObject> var) { }
 ```
 
-####🔹Execution Mode
+#### 🔹Execution Mode
 Custom controllers run in system mode, meaning:
 - Ignore FLS (field-level security)
 - Ignore CRUD
