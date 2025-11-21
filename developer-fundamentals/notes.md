@@ -104,6 +104,7 @@ https://help.salesforce.com/s/articleView?id=platform.schema_builder.htm&type=5
 | Master-Detail | Master + detail + ONE extra lookup |
 | Many-to-Many | Two report types: primary–junction–secondary and vice versa |
 
+----
 
 ##  Multi-Tenant Architecture
 
