@@ -222,3 +222,72 @@ https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_te
 - You can explicitly allow parallel tests using:  
   ```apex
   @IsTest(IsParallel=true)
+
+---
+
+## Custom Exceptions in Apex
+
+### What Are Custom Exceptions?
+Custom exceptions are Apex classes that extend Salesforce’s built-in `Exception` class.  
+They allow developers to define specific, meaningful error types instead of using generic system exceptions.
+
+Custom exceptions:
+- Must extend `Exception`
+- Should end with the word **Exception**
+- Can include custom constructors, variables, and methods
+- Are thrown manually using the `throw` keyword
+
+---
+
+### How to Create a Custom Exception
+
+#### A basic custom exception looks like this:
+
+```apex
+public class MyException extends Exception {}
+```
+***Valid Ways to Instantiate (and Throw) a Custom Exception***
+
+**You can create a custom exception using these four valid constructor patterns:**
+
+✔ 1. No arguments
+```apex
+throw new MyException();
+```
+✔ 2. With an error message
+```apex
+throw new MyException('Something went wrong');
+```
+✔ 3. With an inner exception (cause)
+```apex
+throw new MyException(e);
+```
+✔ 4. With message + inner exception
+```apex
+throw new MyException('Something went wrong', e);
+```
+## Salesforce Extension Pack – What It Enables in VS Code
+
+The Salesforce Extension Pack adds a full development toolkit inside Visual Studio Code.  
+It allows developers to interact directly with their Salesforce orgs, run code, deploy components, and execute tests.
+
+### ✅ Capabilities Enabled by the Extension Pack
+
+- **Execute SOQL queries**  
+  You can run SOQL directly from VS Code using the Command Palette (Ctrl+Shift+P → SFDX: Execute SOQL Query).
+
+- **Deploy metadata components**  
+  Allows pushing/pulling Apex classes, triggers, LWC, Visualforce pages, objects, permissions, etc., between your local project and the Salesforce org.
+
+- **Run Apex tests**  
+  You can run individual test classes, specific methods, or entire test suites directly from VS Code.
+
+### Additional Features Included
+
+- Run anonymous Apex  
+- Debug Apex classes and triggers  
+- Synchronize local project files with the server  
+- Create and run Apex test suites  
+- Use the integrated Salesforce CLI  
+- Auto-generate code (Apex, LWC, triggers, etc.)
+
