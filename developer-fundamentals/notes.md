@@ -1,4 +1,7 @@
 ##  Multi-Tenant Architecture
+**Links:** 
+https://architect.salesforce.com/fundamentals/platform-multitenant-architecture
+
 
 **What it means:**  
 Salesforce runs many organizations (customers) on the same physical infrastructure.
