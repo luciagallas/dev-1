@@ -3,6 +3,9 @@
 **Links:**
 https://developer.salesforce.com/docs/atlas.en-us.pages.meta/pages/pages_controller_methods.htm
 
+https://trailhead.salesforce.com/content/learn/modules/visualforce_fundamentals/visualforce_custom_controllers
+
+
 
 
 **What it is:**  
