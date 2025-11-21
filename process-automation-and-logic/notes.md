@@ -1,4 +1,4 @@
-### A. Approval Process
+### Approval Process
 **What it is:**  
 A structured multi-step review process used when a record must be approved by one or more people.
 
@@ -13,7 +13,7 @@ A structured multi-step review process used when a record must be approved by on
 
 **When it appears in exam questions:**  
 
-### B. Assignment Rule
+### Assignment Rule
 **What it is:**  
 Logic that automatically assigns ownership of **Leads** or **Cases**.
 
@@ -26,7 +26,7 @@ Logic that automatically assigns ownership of **Leads** or **Cases**.
 - Perform updates  
 - Automate logic beyond routing ownership 
 
-### C. Flow Builder
+### Flow Builder
 **What it is:**  
 The primary Salesforce automation tool for declarative logic (no code).  
 Replaces Workflow Rules and Process Builder.
