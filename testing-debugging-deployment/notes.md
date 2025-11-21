@@ -35,13 +35,4 @@ Because it is the *closest possible replica of Production*, making it ideal for 
 
 ---
 
-## Exam Clue
-
-If a question mentions:
-- “final regression testing”
-- “test deployment before production”
-- “stress or performance testing”
-- “full data set”
-- “real-world data dependencies”
-
 

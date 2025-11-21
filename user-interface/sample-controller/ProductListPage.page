@@ -1,0 +1,9 @@
+<apex:page controller="SampleController">
+    <apex:pageBlock title="Product List">
+        <apex:pageBlockTable value="{!productList}" var="product">
+            <apex:column value="{!product.Name}" />
+            <apex:column value="{!product.UnitPrice}" />
+            <apex:column value="{!product.Description}" />
+        </apex:pageBlockTable>
+    </apex:pageBlock>
+</apex:page>

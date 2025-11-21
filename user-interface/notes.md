@@ -1,5 +1,10 @@
 ## Lightning App Builder
 
+**Links:**
+https://developer.salesforce.com/docs/atlas.en-us.pages.meta/pages/pages_controller_methods.htm
+
+
+
 **What it is:**  
 A point-and-click tool used to build and customize the Lightning Experience UI.
 
@@ -39,3 +44,29 @@ A malicious user can inject additional SOQL to change the query and access data 
 String userInput = searchText; // value coming from UI
 String query = 'SELECT Id, Name FROM Account WHERE Name LIKE \'%' + userInput + '%\'';
 List<Account> results = Database.query(query);
+
+```
+
+## Visualforce Getters (Custom Controller)
+
+In Visualforce, data displayed in the page markup must come from:
+- A variable (public property), or
+- A **getter method** in the controller
+
+Visualforce uses a naming convention:
+- If the page references `{!variableName}`,  
+  the controller must have a method named **getVariableName()**.
+
+### Rules:
+- Getter name must start with **get**
+- Followed by the variable name in **exact casing**
+- No parameters
+- Must return the correct data type
+
+Example:
+If markup uses `{!productList}`, Visualforce will automatically call:
+
+```apex
+public List<Product__c> getProductList()
+
+
