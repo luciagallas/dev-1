@@ -69,6 +69,9 @@ https://help.salesforce.com/s/articleView?id=platform.schema_builder.htm&type=5
 | Secondary master | Second MD created |
 | Impact on reports | 2 standard report types (primary and secondary) |
 
+- Junction uses two master-detail fields.
+- First MD is the primary master (controls Owner, color, division).
+- Deleting either master deletes junction record
 ---
 
 ## 🔶 Lookup Relationships
