@@ -70,6 +70,51 @@ If markup uses `{!productList}`, Visualforce will automatically call:
 public List<Product__c> getProductList()
 ```
 ---
+## Custom Controllers in Visualforce
+
+A **custom controller** is an Apex class that fully replaces the standard controller logic for a Visualforce page.
+
+You connect it to the VF page like this:
+
+```xml
+<apex:page controller="MyController">
+```
+🔹 Key Concepts
+✔ Custom controllers MUST have a public, no-argument constructor
+Visualforce instantiates the controller using new MyController(), so the constructor:
+- must be public
+- must have no parameters
+- must not return anything (constructors never return a type)
+
+✔ VALID constructor:
+```apex
+public class MyController {
+    public MyController() {
+        /* init logic */
+    }
+}
+```
+❌ INVALID for Visualforce (has parameters):
+
+```apex
+public MyController(ApexPages.StandardController std) { }
+```
+```apex
+public MyController(Map<Id, SObject> var) { }
+```
+
+🔹 Execution Mode
+Custom controllers run in system mode, meaning:
+- Ignore FLS (field-level security)
+- Ignore CRUD
+- Ignore sharing (unless you add with sharing)
+
+If you want sharing to apply:
+
+```apex
+public with sharing class MyController { }
+```
+---
 ## Custom Buttons — Key Facts
 
 ### Where can Custom Buttons be added?
