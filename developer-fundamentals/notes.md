@@ -6,14 +6,14 @@ https://developer.salesforce.com/docs/atlas.en-us.salesforce_app_limits_cheatshe
 
 https://help.salesforce.com/s/articleView?id=platform.schema_builder.htm&type=5
 
-# Object Relationship Considerations (Quick Reference)
+## Object Relationship Considerations (Quick Reference)
 
 **Salesforce supports two main relationship types: Lookup and Master-Detail, plus many-to-many through junction objects. Each behaves differently in terms of data ownership, deletion, reporting, and conversion.**
 
 ⚠️ https://help.salesforce.com/s/articleView?id=platform.relationships_considerations.htm&type=5
 
 
-## 🔶 Relationship Limits
+### 🔶 Relationship Limits
 | Topic | Key Point |
 |------|-----------|
 | Max master-detail per custom object | **2** |
@@ -21,7 +21,7 @@ https://help.salesforce.com/s/articleView?id=platform.schema_builder.htm&type=5
 
 ---
 
-## 🔶 Converting Relationships
+### 🔶 Converting Relationships
 | Conversion | Requirement |
 |-----------|-------------|
 | **Master-Detail → Lookup** | No roll-up summary fields exist on the master |
@@ -31,7 +31,7 @@ https://help.salesforce.com/s/articleView?id=platform.schema_builder.htm&type=5
 
 ---
 
-## 🔶 Self-Relationships
+### 🔶 Self-Relationships
 | Rule | Explanation |
 |------|-------------|
 | Self-relationship allowed? | **Yes, but only Lookup** |
@@ -39,7 +39,7 @@ https://help.salesforce.com/s/articleView?id=platform.schema_builder.htm&type=5
 
 ---
 
-## 🔶 Master-Detail Rules
+### 🔶 Master-Detail Rules
 | Rule | Explanation |
 |------|-------------|
 | Standard object as detail? | ❌ No (standard cannot be detail to custom) |
@@ -60,7 +60,7 @@ https://help.salesforce.com/s/articleView?id=platform.schema_builder.htm&type=5
 - Cannot create MD if detail object contains data.
 ---
 
-## 🔶 Junction Object (Many-to-Many)
+### 🔶 Junction Object (Many-to-Many)
 | Rule | Explanation |
 |------|-------------|
 | Junction object delete behavior | Deleted if **either parent** is deleted |
@@ -74,7 +74,7 @@ https://help.salesforce.com/s/articleView?id=platform.schema_builder.htm&type=5
 - Deleting either master deletes junction record
 ---
 
-## 🔶 Lookup Relationships
+### 🔶 Lookup Relationships
 | Option | Meaning |
 |--------|---------|
 | Clear the lookup field | Default |
@@ -86,7 +86,7 @@ https://help.salesforce.com/s/articleView?id=platform.schema_builder.htm&type=5
 - Converts to MD only when all detail records have a parent.
 ---
 
-## 🔶 External Object Relationships
+### 🔶 External Object Relationships
 | Type | Supported? |
 |------|------------|
 | Lookup | ✔ |
@@ -97,7 +97,7 @@ https://help.salesforce.com/s/articleView?id=platform.schema_builder.htm&type=5
 
 ---
 
-## 🔶 Reporting Impact
+### 🔶 Reporting Impact
 | Relationship Type | Join Capabilities |
 |------------------|-------------------|
 | Lookup | Parent + child only |
