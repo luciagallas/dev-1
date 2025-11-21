@@ -93,7 +93,7 @@ A failed interview is *not saved* when:
 - If the org already has **>1 GB** of saved failed interviews → new ones aren’t saved  
 - These interviews **don’t count** toward data, file, or paused-flow storage limits
 
---
+---
 
 ## Flow Screen Component Visibility
 
@@ -144,11 +144,12 @@ A trigger fires **before or after**:
 - Delete a record in its **after trigger**
 - Perform synchronous callouts → must use async (future, queueable)
 
-### ❌ Indirect recursion still fails:
+### Indirect recursion still fails:
+
 Example:  
 Before update on Account inserts Contact →  
 After insert on Contact queries Account again and updates it →  
-➡️ Throws error (indirect self-update inside before trigger)
+Throws error (indirect self-update inside before trigger)
 ---
 
 ## 🔁 Recursive & Cascading Behavior
