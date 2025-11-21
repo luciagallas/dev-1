@@ -1,4 +1,4 @@
-### Approval Process
+## Approval Process
 **What it is:**  
 A structured multi-step review process used when a record must be approved by one or more people.
 
@@ -13,7 +13,7 @@ A structured multi-step review process used when a record must be approved by on
 
 **When it appears in exam questions:**  
 
-### Assignment Rule
+## Assignment Rule
 **What it is:**  
 Logic that automatically assigns ownership of **Leads** or **Cases**.
 
@@ -26,7 +26,9 @@ Logic that automatically assigns ownership of **Leads** or **Cases**.
 - Perform updates  
 - Automate logic beyond routing ownership 
 
-### Flow Builder
+-- 
+
+## Flow Builder
 **What it is:**  
 The primary Salesforce automation tool for declarative logic (no code).  
 Replaces Workflow Rules and Process Builder.
@@ -89,5 +91,25 @@ A failed interview is *not saved* when:
 
 ---
 
+## Flow Screen Component Visibility
+
+**What it is:**  
+Flow Screen Components allow **conditional visibility**, meaning a field or section appears only when certain criteria are met.
+
+**How it works:**  
+You can define visibility rules on each component, such as:
+- Show a field only if a checkbox is selected  
+- Show a section only if a picklist has a specific value  
+- Hide inputs until a previous field is completed  
+
+**Key points:**  
+- Conditional visibility **is supported directly on screen components**  
+- Lightning Record Page visibility filters do **not** control Flow Screens  
+- Page Layouts cannot determine visibility inside a Flow  
+- Works for standard, custom, and AppExchange screen components  
+
+**Use case:**  
+To display fields only when they’re relevant (example: during a student registration flow),  
+✔️ **Define visibility criteria on the screen components.**
 
 
