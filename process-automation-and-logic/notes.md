@@ -145,11 +145,11 @@ A trigger fires **before or after**:
 - Perform synchronous callouts → must use async (future, queueable)
 
 ### Indirect recursion still fails:
-
 Example:  
 Before update on Account inserts Contact →  
 After insert on Contact queries Account again and updates it →  
 Throws error (indirect self-update inside before trigger)
+
 ---
 
 ## 🔁 Recursive & Cascading Behavior
