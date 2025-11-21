@@ -159,3 +159,72 @@ They **cannot** call Apex classes saved in the org.
 | **Where You Run It** | Dev Console, VS Code, Code Builder, Tooling API | Anywhere code is invoked (UI, triggers, REST, flows, etc.) |
 | **Permissions Needed** | "API Enabled", and usually "Author Apex" | Depends: to run class you need CRUD/FLS access to objects it touches |
 | **API Anonymous Execution Exception** | Users **without** “Author Apex” can run: built-in methods, webservice methods, and code they write directly | N/A |
+
+----
+
+## 🧪 Apex Unit Tests — Summary & Best Practices
+
+### ✅ Test Data Behavior
+- Test data **never commits**, so you don’t need to delete anything afterward.
+- Always create **all necessary test data** inside the test class.
+- Prepare test data **before** calling `Test.startTest()`.
+- Tests must not rely on existing org data.
+
+--
+
+### 📏 Code Coverage Rules
+- **75% Apex code coverage** is required to deploy to production.
+- Every **trigger must have some coverage**.
+- Lines of code inside **test classes or test methods are NOT counted** toward coverage.
+- `System.debug()` lines are not counted.
+- Focus on covering **all use cases**, not just hitting 75%.
+
+--
+
+### 🔀 Conditional Logic Coverage
+- If your code contains branches (`if/else`, ternary operators, loops),  
+  → **each branch must be tested separately**.
+- Provide both **valid and invalid inputs** to exercise all paths.
+
+--
+
+### 🧩 Assertions & Validation
+- Use `System.assert()`, `System.assertEquals()`, or the Assert class  
+  to verify that logic behaves as expected.
+- Catch exceptions when appropriate and **assert** that they occur.
+
+--
+
+### 👤 Testing with User Contexts
+- Use `System.runAs()` to execute code under a specific user’s permissions.
+- This is required when testing behavior affected by FLS, sharing, or profiles.
+
+--
+
+### 🚀 Bulk Testing Requirements
+- Test bulk behavior using **at least 20 records**.
+- Ensure triggers handle:
+  - Single record operations  
+  - Bulk operations  
+  - Mixed DML scenarios
+
+--
+
+### 🔄 Record Behavior Notes
+- Do NOT assume record IDs are sequential.
+- Use `ORDER BY` in your SOQL queries when testing expected result ordering.
+
+--
+
+
+### 🧵 Parallel Test Execution
+- Tests run in parallel when executed from the Salesforce UI.
+- Parallel tests can cause:
+  - `UNABLE_TO_LOCK_ROW` errors  
+  - deadlocks when inserting duplicate indexed fields  
+- To disable parallel execution:
+  **Setup → Apex Test Execution → Options → Disable Parallel Apex Testing**
+
+- You can explicitly allow parallel tests using:  
+  ```apex
+  @IsTest(IsParallel=true)

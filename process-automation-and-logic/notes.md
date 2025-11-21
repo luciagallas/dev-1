@@ -13,6 +13,8 @@ A structured multi-step review process used when a record must be approved by on
 
 **When it appears in exam questions:**  
 
+---
+
 ## Assignment Rule
 **What it is:**  
 Logic that automatically assigns ownership of **Leads** or **Cases**.
@@ -26,7 +28,7 @@ Logic that automatically assigns ownership of **Leads** or **Cases**.
 - Perform updates  
 - Automate logic beyond routing ownership 
 
--- 
+---
 
 ## Flow Builder
 **What it is:**  
@@ -49,6 +51,8 @@ If the question mentions:
 
 
 ## Failed Flow Interviews
+https://help.salesforce.com/s/articleView?id=platform.flow_ref_elements_screen_conditional_visibility.htm&type=5
+
 
 When a flow fails, Salesforce may save the **failed flow interview**, which allows you to open the exact run in Flow Builder, see the executed path, and debug the issue.  
 If the interview *is saved*, the flow error email includes a **link** to debug it.  
@@ -64,7 +68,7 @@ If it’s *not saved*, the email contains **no link**.
 
 Saved interviews are available for **up to 14 days**.
 
----
+--
 
 ### When Failed Flow Interviews Are NOT Saved
 If the interview isn’t saved, **no debug link** appears in the email.
@@ -79,7 +83,7 @@ A failed interview is *not saved* when:
 - The flow’s metadata field **Status = Draft or InvalidDraft**  
 - The flow is a **Platform Event–Triggered Flow** (very common exam correct answer)
 
----
+--
 
 ### Storage & System Limits (When Interviews Are Saved)
 - Max **100** failed interviews per flow per 24 hours  
@@ -89,7 +93,7 @@ A failed interview is *not saved* when:
 - If the org already has **>1 GB** of saved failed interviews → new ones aren’t saved  
 - These interviews **don’t count** toward data, file, or paused-flow storage limits
 
----
+--
 
 ## Flow Screen Component Visibility
 
