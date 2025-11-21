@@ -1,12 +1,9 @@
-## Lightning App Builder
-
 **Links:**
 https://developer.salesforce.com/docs/atlas.en-us.pages.meta/pages/pages_controller_methods.htm
 
 https://trailhead.salesforce.com/content/learn/modules/visualforce_fundamentals/visualforce_custom_controllers
 
-
-
+## Lightning App Builder
 
 **What it is:**  
 A point-and-click tool used to build and customize the Lightning Experience UI.
@@ -71,5 +68,39 @@ If markup uses `{!productList}`, Visualforce will automatically call:
 
 ```apex
 public List<Product__c> getProductList()
+```
+---
+## Custom Buttons — Key Facts
 
+### Where can Custom Buttons be added?
+- ✅ **Standard Page Layouts**
+- ✅ **Custom Page Layouts**
+- (They appear in the “Buttons, Links, and Actions” section of the layout editor.)
 
+### On which objects do they work?
+- ✅ **Standard Objects** (Account, Contact, Opportunity, etc.)
+- ✅ **Custom Objects**
+
+Custom Buttons are not limited to custom objects — they work on both.
+
+---
+## Static Resources in Salesforce
+
+Static Resources allow you to upload external files to Salesforce so they can be used in Visualforce pages, Lightning components, and other platform features.
+
+### What **can** be uploaded as a Static Resource?
+The following file types are valid static resources:
+
+- **ZIP / archive files**  
+- **Images** (PNG, JPG, GIF, SVG, etc.)
+- **Stylesheets** (CSS)
+- **JavaScript files**
+- **Other static assets** (fonts, icons, JSON files, etc.)
+
+These resources can be referenced in Visualforce using the **$Resource** global variable:
+
+```html
+<apex:includeScript value="{!$Resource.myJsFile}"/>
+<apex:stylesheet value="{!$Resource.myCssFile}"/>
+<img src="{!$Resource.myImage}"/>
+```

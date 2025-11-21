@@ -266,6 +266,8 @@ throw new MyException(e);
 ```apex
 throw new MyException('Something went wrong', e);
 ```
+
+---
 ## Salesforce Extension Pack – What It Enables in VS Code
 
 The Salesforce Extension Pack adds a full development toolkit inside Visual Studio Code.  
