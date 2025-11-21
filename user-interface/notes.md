@@ -25,3 +25,17 @@ Select Lightning App Builder when the requirement mentions:
 - “Dynamic visibility on a record page”
 
 This tool is **UI-only**, not an automation feature.
+
+
+## SOQL Injection & escapeSingleQuotes
+
+**What is SOQL injection?**  
+SOQL injection happens when user input is concatenated directly into a dynamic SOQL string.  
+A malicious user can inject additional SOQL to change the query and access data they shouldn't.
+
+**Example of vulnerable code (DO NOT DO THIS):**
+
+```apex
+String userInput = searchText; // value coming from UI
+String query = 'SELECT Id, Name FROM Account WHERE Name LIKE \'%' + userInput + '%\'';
+List<Account> results = Database.query(query);
