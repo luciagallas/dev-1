@@ -160,6 +160,7 @@ These features help improve performance and usability:
 
 
 ## Cross-Object Formulas
+https://help.salesforce.com/s/articleView?id=platform.customize_cross_object.htm&type=5
 
 ### What Is a Cross-Object Formula?
 A cross-object formula is a formula that references fields on a **related parent object**.  
@@ -171,7 +172,7 @@ Account.Industry
 
 ### What Cross-Object Formulas CAN Do
 - Pull field values from **parent** objects (master-detail or lookup).
-- Reach **up to 10 relationships** deep. --> Case.Account.Owner.Manager.Department (4 relationships away)
+- Reach **up to 10 relationships** deep. --> `Case.Account.Owner.Manager.Department` (4 relationships away)
 - Display parent-field values **even if the user does not have access** to the parent record.
 - Work in:
 - Formula fields  

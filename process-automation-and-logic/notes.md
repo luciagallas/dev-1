@@ -177,6 +177,7 @@ Throws error (indirect self-update inside before trigger)
 ---
 
 ## SOQL Escape Sequences
+https://developer.salesforce.com/docs/atlas.en-us.soql_sosl.meta/soql_sosl/sforce_api_calls_soql_select_quotedstringescapes.htm
 
 SOQL supports **escape sequences** so you can include special characters inside string literals without breaking the query.  
 All escape sequences start with a backslash (`\`).
@@ -188,3 +189,58 @@ All escape sequences start with a backslash (`\`).
 | `\'`   | Single quote literal | When the string contains `'` |
 | `\"`   | Double quote literal | When the string contains `"` |
 | `\n`   | New line character | When the stored text includes line breaks |
+
+---
+## SOSL (Salesforce Object Search Language)
+
+**What SOSL is:**  
+SOSL is a text-search language used to search across multiple objects at the same time.  
+It looks for matches in text, email, and phone fields, and returns results from all specified objects in a single query.
+
+**When to Use SOSL:**  
+- When you need to search **multiple objects** in one query.  
+- When you don’t know which object contains the data.  
+- When performing **full-text searches** (names, emails, keywords).  
+- When searching across both standard and custom objects.  
+- When you need fast, indexed search capabilities.
+
+**Key Characteristics:**  
+- Returns up to **2,000 results** based on relevance.  
+- Uses the Salesforce **search index**, making it faster than SOQL for text searches.  
+- Can include filters such as `IN`, `RETURNING`, `LIMIT`, `OFFSET`, and data categories.  
+- Sharing rules are applied **after** the search results are generated.  
+- Supports wildcards (`*`, `?`) and escape sequences for special characters.
+
+## SOQL (Salesforce Object Query Language)
+
+**What SOQL is:**  
+SOQL is used to query data from a single object or from related objects (parent-to-child or child-to-parent).  
+It works like SQL but is tailored for Salesforce’s object model.
+
+**When to Use SOQL:**  
+- When you know **which object** you need to query  
+- When you need **filtered, structured data**  
+- When you need to traverse **relationships** (parent or child)  
+- When retrieving large or complex datasets
+
+**Key Characteristics:**  
+- Can query **one object at a time**, but supports relationship traversal  
+- Uses `SELECT ... FROM ... WHERE ...` structure  
+- Cannot search text across unrelated objects  
+- Returns records in a predictable structure  
+- Supports filtering (`WHERE`), sorting (`ORDER BY`), and limits (`LIMIT`)
+
+## SOQL vs SOSL — Quick Comparison
+
+| Feature | SOQL | SOSL |
+|--------|------|------|
+| Purpose | Query **one object** (with optional child/parent relationships) | Search **across multiple objects** at once |
+| Search Type | Structured queries (fields, filters, relationships) | Full-text search using the Salesforce search index |
+| Best For | When you **know the object and fields** you want | When you **don’t know where the data is**, or need cross-object search |
+| Return Type | Records from **one object** (with related data) | Search results from **multiple objects**, based on text relevance |
+| Searchable Fields | Any field | Text, Email, Phone fields |
+| Supports Wildcards | Limited (`LIKE`) | Strong wildcard support (`*`, `?`) |
+| Max Results | Governed by query limits | Top **2,000** most relevant results |
+| Performance | Slower for text search | Faster for text lookup (uses search index) |
+| Relationship Queries | Fully supported | Not supported (unless “relationship queries in SOSL” feature is enabled) |
+| When to Use | Get structured, filtered data | Find records matching keywords across objects |
