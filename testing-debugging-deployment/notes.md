@@ -1,10 +1,10 @@
-## Staging Environment (Full Sandbox)
 
 **Links:**  
 https://help.salesforce.com/s/articleView?id=platform.create_test_instance.htm&type=5ç
 
 https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_anonymous_block.htm
 
+## Staging Environment (Full Sandbox)
 
 **What is a Staging environment?**  
 A Staging environment is the final environment before Production in the development lifecycle.  
