@@ -157,3 +157,44 @@ These features help improve performance and usability:
 - Designing a new data model visually  
 - Quickly creating fields/relationships without clicking through Setup pages  
 - Understanding complex relationships at a glance  
+
+
+## Cross-Object Formulas
+
+### What Is a Cross-Object Formula?
+A cross-object formula is a formula that references fields on a **related parent object**.  
+It allows a record to *pull data* from its parent (master-detail or lookup) relationship without storing it directly.
+
+Example:
+- A formula on **Contact** that displays the parent Account’s Industry:
+Account.Industry
+
+### What Cross-Object Formulas CAN Do
+- Pull field values from **parent** objects (master-detail or lookup).
+- Reach **up to 10 relationships** deep. --> Case.Account.Owner.Manager.Department (4 relationships away)
+- Display parent-field values **even if the user does not have access** to the parent record.
+- Work in:
+- Formula fields  
+- Validation rules  
+- Workflow / Process Builder  
+- Approval rules  
+- Some Flow contexts
+
+### What Cross-Object Formulas CANNOT Do
+- **Cannot reference child records**.  
+- Example: An Account formula cannot pull values from a Contact.
+- **Cannot be used inside Roll-Up Summary fields.**
+- **Cannot reference an object directly**, only its fields.
+- Valid: `Account.Owner.Name`
+- Invalid: `Account.Owner`
+
+### Security Note
+If a cross-object formula is displayed in a page layout, the user will see the referenced parent-field value **even without permission** to view that parent record.
+
+### Summary
+Cross-object formulas:
+- Move **upward** through parent relationships  
+- Are read-only  
+- Are extremely useful for exposing related data on child records  
+- Cannot move downward to children  
+

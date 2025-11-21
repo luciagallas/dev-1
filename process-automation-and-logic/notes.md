@@ -68,7 +68,7 @@ If it’s *not saved*, the email contains **no link**.
 
 Saved interviews are available for **up to 14 days**.
 
---
+---
 
 ### When Failed Flow Interviews Are NOT Saved
 If the interview isn’t saved, **no debug link** appears in the email.
@@ -83,7 +83,7 @@ A failed interview is *not saved* when:
 - The flow’s metadata field **Status = Draft or InvalidDraft**  
 - The flow is a **Platform Event–Triggered Flow** (very common exam correct answer)
 
---
+---
 
 ### Storage & System Limits (When Interviews Are Saved)
 - Max **100** failed interviews per flow per 24 hours  
@@ -175,3 +175,16 @@ Throws error (indirect self-update inside before trigger)
 - In API ≥ 21.0, full 200-record chunks run without further splitting.
 - Governor limits reset **between Bulk API batches**, not inside a batch.
 ---
+
+## SOQL Escape Sequences
+
+SOQL supports **escape sequences** so you can include special characters inside string literals without breaking the query.  
+All escape sequences start with a backslash (`\`).
+
+### ✔ Valid SOQL Escape Sequences
+
+| Escape | Meaning | When It’s Used |
+|--------|---------|----------------|
+| `\'`   | Single quote literal | When the string contains `'` |
+| `\"`   | Double quote literal | When the string contains `"` |
+| `\n`   | New line character | When the stored text includes line breaks |
