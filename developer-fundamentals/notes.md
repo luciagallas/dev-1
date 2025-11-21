@@ -1,4 +1,4 @@
-##  Multi-Tenant Architecture
+
 **Links:** 
 https://architect.salesforce.com/fundamentals/platform-multitenant-architecture
 
@@ -6,7 +6,103 @@ https://developer.salesforce.com/docs/atlas.en-us.salesforce_app_limits_cheatshe
 
 https://help.salesforce.com/s/articleView?id=platform.schema_builder.htm&type=5
 
+# Object Relationship Considerations (Quick Reference)
 
+**Salesforce supports two main relationship types: Lookup and Master-Detail, plus many-to-many through junction objects. Each behaves differently in terms of data ownership, deletion, reporting, and conversion.**
+
+⚠️ https://help.salesforce.com/s/articleView?id=platform.relationships_considerations.htm&type=5
+
+
+## 🔶 Relationship Limits
+| Topic | Key Point |
+|------|-----------|
+| Max master-detail per custom object | **2** |
+| Lookup relationships per object | Many (count as fields) |
+
+---
+
+## 🔶 Converting Relationships
+| Conversion | Requirement |
+|-----------|-------------|
+| **Master-Detail → Lookup** | No roll-up summary fields exist on the master |
+| After converting MD → Lookup | OWD becomes **Public Read/Write** |
+| **Lookup → Master-Detail** | All child records must have a parent (no nulls) |
+| Lookup → MD not possible when | OWD of child = **Controlled by Parent** |
+
+---
+
+## 🔶 Self-Relationships
+| Rule | Explanation |
+|------|-------------|
+| Self-relationship allowed? | **Yes, but only Lookup** |
+| Many-to-many self-relationship allowed? | ❌ No (junction object cannot have same master twice) |
+
+---
+
+## 🔶 Master-Detail Rules
+| Rule | Explanation |
+|------|-------------|
+| Standard object as detail? | ❌ No (standard cannot be detail to custom) |
+| Reparenting | ❌ Off by default; allowed only for **custom detail objects** |
+| Max multilevel MD levels | **3** |
+| Detail record owner | Inherits owner from master → cannot have queues |
+| Delete master | Deletes detail + subdetail |
+| Delete detail | Moves to Recycle Bin (master stays) |
+| Restore master | Restores detail too |
+| Restore detail (if master deleted after) | ❌ Cannot be restored (no parent) |
+| Create MD relationship | Only if no data exists; otherwise create lookup first |
+
+- Detail inherits owner, sharing, and permissions from the master.
+- Deleting the master deletes all detail records (cascade delete).
+- Detail records cannot have queues (no Owner field).
+- Reparenting is off by default but allowed for custom detail objects.
+- Standard objects cannot be detail of custom master objects.
+- Cannot create MD if detail object contains data.
+---
+
+## 🔶 Junction Object (Many-to-Many)
+| Rule | Explanation |
+|------|-------------|
+| Junction object delete behavior | Deleted if **either parent** is deleted |
+| Junction object ownership | Inherits **Owner** from primary master |
+| Primary master | First MD created |
+| Secondary master | Second MD created |
+| Impact on reports | 2 standard report types (primary and secondary) |
+
+---
+
+## 🔶 Lookup Relationships
+| Option | Meaning |
+|--------|---------|
+| Clear the lookup field | Default |
+| Prevent parent deletion | Stops deletion if children exist |
+| Delete child when parent deleted | Only custom lookup → custom object; requires support from Salesforce (cascade delete) |
+
+- More loosely coupled relationship.
+- You can configure what happens when the parent is deleted: clear field, restrict delete, or cascade (custom only).
+- Converts to MD only when all detail records have a parent.
+---
+
+## 🔶 External Object Relationships
+| Type | Supported? |
+|------|------------|
+| Lookup | ✔ |
+| External Lookup | ✔ |
+| Indirect Lookup | ✔ |
+| Master-Detail | ❌ Not supported |
+| Cascade delete | ❌ Not supported |
+
+---
+
+## 🔶 Reporting Impact
+| Relationship Type | Join Capabilities |
+|------------------|-------------------|
+| Lookup | Parent + child only |
+| Master-Detail | Master + detail + ONE extra lookup |
+| Many-to-Many | Two report types: primary–junction–secondary and vice versa |
+
+
+##  Multi-Tenant Architecture
 
 **What it means:**  
 Salesforce runs many organizations (customers) on the same physical infrastructure.
