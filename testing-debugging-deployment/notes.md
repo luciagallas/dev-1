@@ -268,6 +268,49 @@ throw new MyException('Something went wrong', e);
 ```
 
 ---
+
+## Apex Test Data Isolation
+
+Starting with **API version 24.0**, Apex test methods **cannot access real org data**.  
+This rule is called **test data isolation**.
+
+By default, test methods can ONLY see:
+- Data they create inside the test
+- A small set of **setup / metadata** objects
+
+### ✅ What Test Methods *Can Access Without Creating Data*
+These objects are still available because they represent **metadata**, not business data:
+
+- **User**
+- **Profile**
+- **Organization**
+- **RecordType**
+- **CronTrigger**
+- **ApexClass**
+- **ApexTrigger**
+- **ApexComponent**
+- **ApexPage**
+
+These can be queried freely inside test methods.
+
+### ❌ What Test Methods *Cannot Access*
+By default, tests CANNOT access any of the following pre-existing records:
+
+- Standard object data (Accounts, Contacts, Cases, etc.)
+- Custom object data
+- Custom Settings data
+- Custom Metadata data
+- Any business data in the org
+
+They *must* create their own test data.
+
+### ⚠️ The SeeAllData Annotation
+You can override isolation using:
+
+```apex
+@IsTest(SeeAllData=true)
+
+----
 ## Salesforce Extension Pack – What It Enables in VS Code
 
 The Salesforce Extension Pack adds a full development toolkit inside Visual Studio Code.  
