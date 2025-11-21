@@ -116,4 +116,61 @@ You can define visibility rules on each component, such as:
 To display fields only when they’re relevant (example: during a student registration flow),  
 ✔️ **Define visibility criteria on the screen components.**
 
+----
 
+## 🧩 Trigger Basics
+https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_triggers.htm
+
+
+### Types of Triggers
+A trigger fires **before or after**:
+- `insert`
+- `update`
+- `delete`
+- `undelete`
+- `merge`  
+- `upsert`
+
+### When to Use Them
+- **Before triggers**: validate or modify field values before saving.
+- **After triggers**: access system fields (Id, LastModifiedDate), create related records, invoke async processes.  
+  > *Records in after triggers are read-only.*
+
+---
+## 🚫 Trigger Restrictions & Errors
+
+### ❌ You CANNOT:
+- Update/delete a record **inside its own before trigger** → runtime error  
+- Delete a record in its **after trigger**
+- Perform synchronous callouts → must use async (future, queueable)
+
+### ❌ Indirect recursion still fails:
+Example:  
+Before update on Account inserts Contact →  
+After insert on Contact queries Account again and updates it →  
+➡️ Throws error (indirect self-update inside before trigger)
+---
+
+## 🔁 Recursive & Cascading Behavior
+
+- Triggers can modify *other records of the same object*, which can fire additional triggers.
+- Salesforce prevents infinite loops through **governor limits** (DML, SOQL, CPU time).
+- There is **NO limit on the number of cascading triggers**, only limit enforcement through governors.
+---
+
+## 🛠 Implementation Considerations
+
+- `upsert` fires both insert/update triggers as appropriate.
+- `merge` fires:
+  - before/after delete on losing records  
+  - before/after update on winning record
+- Undelete triggers apply only to certain objects.
+- Field history is only written **at the end** of the trigger execution.
+- Field history obeys **user permissions**.
+---
+
+## 🌐 Bulk API Behavior
+- In API < 21.0, Bulk API chunks of 200 records split internally into 100-record chunks.
+- In API ≥ 21.0, full 200-record chunks run without further splitting.
+- Governor limits reset **between Bulk API batches**, not inside a batch.
+---
