@@ -4,6 +4,8 @@ https://architect.salesforce.com/fundamentals/platform-multitenant-architecture
 
 https://developer.salesforce.com/docs/atlas.en-us.salesforce_app_limits_cheatsheet.meta/salesforce_app_limits_cheatsheet/salesforce_app_limits_platform_api.htm
 
+https://help.salesforce.com/s/articleView?id=platform.schema_builder.htm&type=5
+
 
 
 **What it means:**  
@@ -122,3 +124,36 @@ If the org exceeds this daily allocation, API calls fail.
 | Daily API Allocation | Max total requests per 24 hours | REQUEST_LIMIT_EXCEEDED |
 
 These limits ensure one customer cannot degrade performance for others.
+
+
+## Schema Builder — Performance & Navigation Features
+
+Schema Builder can become slow when many objects and relationships are displayed.  
+These features help improve performance and usability:
+
+### ✔ Object Map
+- Use the mini-map to quickly navigate around the canvas.
+- Helps locate objects without scrolling.
+
+### ✔ Hide Relationships
+- Hides relationship lines between objects.
+- Reduces rendering workload → improves performance.
+
+### ✔ Object Filter
+- Allows displaying only selected objects.
+- Useful to focus on objects of interest and reduce clutter.
+
+### What Schema Builder CAN do
+- Create **custom objects**  
+- Create **lookup** relationships  
+- Create **master-detail** relationships  
+- Create **custom fields** (except Geolocation)  
+- View all fields, required flags, and relationship types  
+- View both **standard** and **custom** objects  
+- Drag-and-drop fields to create or modify structure  
+- Automatically saves layout positions on the canvas  
+
+### When to Use Schema Builder
+- Designing a new data model visually  
+- Quickly creating fields/relationships without clicking through Setup pages  
+- Understanding complex relationships at a glance  

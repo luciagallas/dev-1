@@ -46,3 +46,48 @@ If the question mentions:
 - “replace workflow/process builder”
 
 
+## Failed Flow Interviews
+
+When a flow fails, Salesforce may save the **failed flow interview**, which allows you to open the exact run in Flow Builder, see the executed path, and debug the issue.  
+If the interview *is saved*, the flow error email includes a **link** to debug it.  
+If it’s *not saved*, the email contains **no link**.
+
+### When Failed Flow Interviews ARE Saved
+(Fails are saved only for flows built with the **Free-Form** layout)
+
+- Screen Flows  
+- Record-Triggered Flows  
+- Schedule-Triggered Flows  
+- Autolaunched Flows (not triggered)
+
+Saved interviews are available for **up to 14 days**.
+
+---
+
+### When Failed Flow Interviews Are NOT Saved
+If the interview isn’t saved, **no debug link** appears in the email.
+
+A failed interview is *not saved* when:
+
+- The flow comes from a **managed package** and isn’t a template  
+- The interview was **paused and then resumed**, and the failure happens after the resume  
+- The error is **handled** (the element has a fault connector)  
+- The failure happens during an **Apex test method**  
+- The flow is a **standard Salesforce flow**  
+- The flow’s metadata field **Status = Draft or InvalidDraft**  
+- The flow is a **Platform Event–Triggered Flow** (very common exam correct answer)
+
+---
+
+### Storage & System Limits (When Interviews Are Saved)
+- Max **100** failed interviews per flow per 24 hours  
+- For a batch ≤200 failed runs in one transaction → only **one** interview saved  
+- Max **3,000** failed interviews per org per 24 hours  
+- Interviews **larger than 1 MB** aren’t saved  
+- If the org already has **>1 GB** of saved failed interviews → new ones aren’t saved  
+- These interviews **don’t count** toward data, file, or paused-flow storage limits
+
+---
+
+
+

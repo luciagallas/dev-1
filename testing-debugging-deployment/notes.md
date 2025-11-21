@@ -41,6 +41,29 @@ Because it is the *closest possible replica of Production*, making it ideal for 
 
 ---
 
+## Scratch Orgs — Quick Summary
+
+Scratch orgs are **temporary, configurable, disposable DX environments** used for isolated development and automated testing.
+
+### Use Scratch Orgs For:
+- **Automated testing / CI pipelines**
+- **Working on a single feature or update**
+- **Reproducible, source-driven development**
+- **Short-lived development and quick validation**
+
+### Do NOT Use Scratch Orgs For:
+- Shared environments (one-per-dev only)
+- Replacing sandboxes (UAT, staging, full testing → sandboxes)
+- Long-term or data-heavy testing
+- Performance or integration testing
+
+### Key Traits:
+- Short lifespan  
+- Created from a config file  
+- Disposable (create → test → delete)  
+- Perfect for Git-based development  
+
+
 ## Anonymous Apex — Key Facts
 
 ### What it is
